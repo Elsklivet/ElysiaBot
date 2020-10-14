@@ -29,7 +29,7 @@
     "url": "git+https://github.com/Elsklivet/ElysiaBot.git"
   },
   "author": "Elsklivet#8867",
-  "license": "GNU General Public License 3.0",
+  "license": "Apache License 2.0",
   "bugs": {
     "url": "https://github.com/Elsklivet/ElysiaBot/issues"
   },

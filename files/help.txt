@@ -1,0 +1,61 @@
+NOTICE:
+Some commands have become outdated and are no longer operational due to changes in the APIs
+of the entities which they connected to. These commands are marked with a [!]
+
+Commands:
+ help/h: display help
+ ... -text | -txt | -t | -file | -f : send help file as an attachment
+ ping: ping the bot
+ avatar: show your avatar as an image, or those of anyone you mention
+ nsfw (-optin | -optout): opt into NSFW; opt out of NSFW
+ hentai: post random hentai
+ about: post your information by default, or the info of all @mentions
+ dev ...: [inaccessible to most users]
+ ... -self: post Elysia's information
+ ... -setstatus: set Elysia's online status
+ ... -setafk: [boolean] set Elysia as afk
+ ... -setactivity: set Elyia's playing activity
+ ... -get
+ ... ... changelog: get the changelog
+ mdn: get MDN documentation [!]
+ ... Formatted: \"{type}.{object}\" where type is either
+ ... ... class,operator,function/func,statement
+ djs: get DJS documentation. NOTE THE PERIOD, NOT POUND SIGN.
+ ... Formatted: \"{type}.{object}\" or \"{type}.{object}.{property/method}\"
+ ... ... where type is either class or typedef, object is the object, etc.
+ py/pydocs: get Python 3 Documentation [!]
+ ... Formatted: \"{type}#{object}\" or \"{nonstdobject}\"
+ ... ... where type is either stdtype, exceptions, or constants, and object is the subject or object, etc.
+ java/javadocs: get Java documentation [!]
+ ... Formatted: \"{pck1}\"#...#\"{obj}\"
+ anime "anime name" [-x | -s]: (INCLUDE QUOTATIONS)
+ ... -x : find an exact anime with crunchyroll (increased risk of 404 error)
+ ... -s : search for a given anime with crunchyroll
+ manga "manga name" [-x | -s]: (INCLUDE QUOTATIONS)
+ ... -x : find an exact manga with mangarock.club (increased risk of 404 error)
+ ... -s : search for a given manga with mangarock.club
+ wiki/wikipedia "article name" [lang]: goes to wikipedia article with optional language (two character format)
+ wolfram/wolf/wolframalpha: search wolfram|alpha
+ ... Formatted: "query" with quotations and NO SPACES (W|A does not parse well)
+ clean: delete messages under 14 days old
+ ... -before/-b id: delete up to 100 messages before the given id
+ ... -after/-a id: delete up to 100 messages after the given id
+ ... -embeds: delete up to 100 messages containing embeds
+ ... -attach/-attachments: delete up to 100 messages containing attachments
+ ... -r/-react: delete up to 100 messages that have been reacted to with a certain emoji
+ ... -purge: deletes up to 100 messages that are not pinned
+ ... -text/-t/-txt: deletes up to 100 messages that are not pinned and do not contain embeds or attachments
+ ... -user/-u: deletes up to 100 messages from the mentioned user / user with given ID, given they are not pinned
+ nhentai "numbers#chapter/tag": get a hentai from NHentai
+ ... -tag/-t: search for a tag
+ ... -s/-search: search the site for a hentai
+ ... [none]: go to the specified numbers, with a chapter optionally denoted by a pound sign
+ google "search query": search google lol
+ reddit "query | sub" [-r | -s]: use reddit
+ ... -r: go to the exact subreddit in quotes
+ ... -s: search all of reddit for the query
+ roll ${n}d${t}+${m}: No quotes or spaces after command, will break. Rolls a dice where n is number of rolls, 'd' is d, t is max dice roll, and m is modifier.
+ dict "word": Go to word in the dictionary.
+ leo "word": Translate the given word in LEO.de German translator.
+ duden "word" "word type": Search for a word in Duden online Worterbuch. Note, word type is optional, and is usually only present for adjectives and verbs that have noun versions. Searching is safer.
+ spanish "word": Translate the given word in Spanish.

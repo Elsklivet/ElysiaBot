@@ -1,0 +1,123 @@
+=================================================================
+=                          Elysia#0115                          =
+=================================================================
+
+AUTHOR(S): Elsklivet#8867 (Gavin Heinrichs) [348235152972972042], Disappointment Incarnate#1101 (Josh Ye) [135151101015097344]
+DATE CREATED: 5 Sep 2019
+USER ID: 619279373404602381
+DESCRIPTION: Elysia is an all purpose bot created by Gavin Heinrichs (Elsklivet/KaiserHeinrichs) with the intent to be both
+            fun and helpful, containing both utility commands and chat commands that function as jokes. The bot was also
+            designed to be a learning experience, as it is the authors' first project in JavaScript outside of a pong game.
+CHANGELOG:
+begins @ 10 September 2019 (v1.3)
+-----------------------------------------------------------------
+ > 10 September 2019
+  + added dev options ["-setactivity","-setafk","-setstatus"]
+  + added changelog
+  + added ./files directory
+  * changed "index.js / client.on('ready') / event" to include a setStatus('commands', 'LISTENING') call
+  * changed py.js, java.js with minor cleanups
+  TODO:
+   # change dev commands to use a switch statement [REJECTED @ 11 Sep 2019]
+   # change permissions checks in all commands
+   # add an HTTP and HTTPS request requirement, to query embed databases for documentation [LARGE]
+ < [v1.3]
+
+ > 11 September 2019
+  * changed index.js to include a JSON parser for about.json, with the intent to
+  ... make processing static locations more easy, and possibly allow for smoother
+  ... location changes or reinstall points.
+  + added directory information to about.json
+  + added "-get" / "changelog" option to ~dev
+  + added comments to prep for v12 update
+  * changed help to have a "help.txt" attachment option
+  + added help.txt
+  + added "helpf" to about.json
+  + added "~hentai"
+  * made elysia unresponsive when in a state of offline, dnd, or idle
+  * fixed various commands
+  * commands now delete themselves in 100 ms (allowing query time for Elysia)
+  * changed about and dev self to be RichEmbeds (DEPRECATED SOON) instead of codeblocks
+  - rejected change request: change dev commands to use a switch statement, reason: Multiple layers to boolean checks, requires &&
+  TODO:
+   # change permissions checks in all commands
+   # add an HTTP request ...
+   # add /** * * */ documentation, please
+   # /!\ URGENT /!\ prep files to update to discord.js v12, as a stable version will roll out shortly /!\ [PREPARED @ 11 Sep 2019]
+ < [v1.3.2]
+
+ > 12 September 2019
+  - removed "cock and balls" chat trigger; reason: this bot is a utility bot, not necessarily a shitpost bot
+  - removed "what day is it" chat trigger; same reason
+  + [API] added 'request' module
+  + added "anime" command
+  + added "manga" command
+  + added "wiki" command
+  ! PROBLEM: HTTP request for documentation ending in a script failure. Data stored on an ajax server. Inaccessible without ajax server authentication.
+  TODO:
+   # Fix HTTP issue
+   # Add wolfram|alpha command
+   # /!\ Prep files for v12 update
+ < [v1.3.4]
+
+ > 13 September 2019
+  * changed all commands to have an array of aliases
+   ... (slows response time by an average of 154 milliseconds in ten trials, or by 2.16 times; from 71ms avg to 154 ms avg)
+  + Wolfram Alpha command
+  TODO:
+   # Fix HTTP issue
+   # /!\ Prep files for v12 update
+   # Acquire master (v12) discordjs
+< [v1.4]
+
+> 14 September 2019
+ * work was done on the clean command
+ + clean command is live
+< [v1.4.1]
+
+> 15 September 2019
+ + added '-u' option to ~clean
+ TODO:
+  # same as above
+< [v1.4.2]
+
+> 16 September 2019
+ * changed about.json to config.json
+ + added the ability to get users by their ID, even if they are not in the guild, in the ~about command
+ + added ~nhentai command
+< [v1.4.3]
+
+> 21 September 2019
+ + added scraping functionality to DJS command
+ + began Scythe
+ TODO:
+  # add scraping functionality to all other internet commands, using api mentioned next
+  # build and push out Scythe API to scrape websites and turn them into a discord embed
+< [v1.4.8]
+
+> 27 September 2019
+ - removed embeds from all internet based commands; Scythe might be used, but it also might be unnecessary work.
+< [v1.4.9]
+
+> 23 July 2020
+ + added Google command
+< [v1.5]
+
+> 30 July 2020
+ * UPDATED TO v12!!!!!!!!!
+ + added reddit command
+ + added roll command
+ + added dict command
+ + added LEO command
+ + added duden command
+ + added spanish command
+ - removed all mentions of 'RichEmbed'
+ .. + replaced all mentions of 'RichEmbed' with 'MessageEmbed' as per v12 API
+ + added some components to the chat AI
+ TODO:
+ # Make it so the help command can follow with a specific command's name and get its description
+ # Move the chat AI to a new, separate file from index.js
+ # get .cache implemented everywhere find or get is implemented
+ # scythe... this will probably never get finished, as I don't really need it anymore...
+ # URGENT: Fix rate-limiting problem... BulkDelete regularly rate-limits.
+< [v1.6.1]

@@ -1,0 +1,23 @@
+{
+  "username":"Elysia",
+  "tag":"Elysia#0115",
+  "version": "v1.6.1",
+  "id":"619279373404602381",
+  "desc":"Elysia is an all purpose bot created by Gavin Heinrichs (Elsklivet/KaiserHeinrichs) with the intent to be both fun and helpful, containing both utility commands and chat commands that function as jokes. The bot was also designed to be a learning experience, as it is the authors' first project in JavaScript outside of a pong game.",
+  "authors":["Elsklivet","Disappointment Incarnate"],
+  "authorIDS":["348235152972972042","135151101015097344"],
+  "changelogpath":"F:\\DiscordBots\\Dreadnot\\files\\abt.txt",
+  "aliases":["Elysia","Dreadnot"],
+  "lang":"en",
+  "filedir":"F:\\DiscordBots\\Dreadnot\\files",
+  "imagedir":"F:\\DiscordBots\\Dreadnot\\images",
+  "memedir":"E:\\! DCIM\\XD",
+  "commanddir":"F:\\DiscordBots\\Dreadnot\\commands",
+  "deviantdir":"E:\\! DCIM\\DeviantArt",
+  "hentaidir":"E:\\! DCIM\\Ahegao",
+  "copedir":null,
+  "scythedir":"F:\\DiscordBots\\Dreadnot\\src\\scythe",
+  "helpf":"F:\\DiscordBots\\Dreadnot\\files\\help.txt",
+  "tokenf":"F:\\DiscordBots\\Dreadnot\\files\\dreadnot.json",
+  "aboutf":"F:\\DiscordBots\\Dreadnot\\files\\abt.txt"
+}

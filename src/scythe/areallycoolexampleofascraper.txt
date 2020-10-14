@@ -1,0 +1,9 @@
+fetch('https://docs.python.org/3/library/index.html').then(res => res.text()).then(function(body){
+  let $ = cheerio.load(body);
+  //console.log(body);
+  let author = $('title').text();
+  let title = $('h1').text();
+  let desc = $('p').next().next().text().substr(0,400)+"...";
+  console.log(`embed = {\n\t"author": {"name":${author}"},\n\t"title": "${title}",\n\t"desc": "${desc}",\n}`);
+
+}).catch(function(err){console.error(err);});

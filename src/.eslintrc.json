@@ -1,0 +1,16 @@
+{   
+    "extends": "eslint:recommended",
+    "parser":"babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "script"
+    },
+    "env": {
+        "node": true
+    },
+    "rules":{
+        "semi": "error",
+        "eqeqeq":"error",
+        "quotes": "warn"
+    }
+ }

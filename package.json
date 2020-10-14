@@ -1,0 +1,37 @@
+{
+  "name": "dreadnot",
+  "version": "1.0.0",
+  "description": "Basic discord bot",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bufferutil": "^4.0.1",
+    "babel-eslint": "^10.0.3",
+    "cheerio": "^1.0.0-rc.3",
+    "discord.js": "^12.2.0",
+    "git": "^0.1.5",
+    "html-to-text": "^5.1.1",
+    "jquery": "^3.5.1",
+    "jsonframe-cheerio": "^3.0.1",
+    "libsodium-wrappers": "^0.7.5",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.1",
+    "opusscript": "^0.0.7",
+    "request": "^2.88.0",
+    "wtf_wikipedia": "^7.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elsklivet/ElysiaBot.git"
+  },
+  "author": "Elsklivet#8867",
+  "license": "GNU General Public License 3.0",
+  "bugs": {
+    "url": "https://github.com/Elsklivet/ElysiaBot/issues"
+  },
+  "homepage": "https://github.com/Elsklivet/ElysiaBot#readme"
+}

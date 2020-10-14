@@ -2,3 +2,4 @@ images/
 node_modules/
 dreadnot.json
 *.zip
+**/.vscode/

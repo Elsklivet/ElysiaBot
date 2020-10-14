@@ -3,10 +3,6 @@ new Command({
   description: "Get information from the MDN API.",
   call: ["mdn"],
   onCall: function(message, args){
-    if((!message.channel.type === 'dm' || !message.channel.type === 'group') && (!message.member.roles.has("620409576944173057") || !message.member.hasPermission('ADMINISTRATOR'))){
-      message.channel.send("You cannot use that command without the \"developer\" role or administrative capabilities...");
-      return;
-    }
 
     let arg = String(args)
     let paths = [arg];

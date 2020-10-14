@@ -4,11 +4,6 @@ new Command({
   call: ["djs"],
   onCall: function(message, args){
 
-    if((!message.channel.type === 'dm' || !message.channel.type === 'group') && (!message.member.roles.has("620409576944173057") || !message.member.hasPermission('ADMINISTRATOR'))){
-      message.channel.send("You cannot use that command without the \"developer\" role or administrative capabilities...");
-      return;
-    }
-
     function gembed(src, q){
       return fetch(`https://djsdocs.sorta.moe/v2/embed?src=${src}&q=${q}`).then(r => r.text());
     }

@@ -22,7 +22,7 @@ new Command({
     	let files = String(data).split(','); // Split files into an array.
       let img = files[getRandomInt(files.length-1)];
         message.channel.send(`Here's some porn for you, ${message.author}...`,{files: [{attachment: config.deviantdir + "\\" + img, name:"SPOILER_"+img}]}).catch(error => {
-          console.log(error.stack());
+          console.log(error.printStackTrace());
           return message.channel.send('It looks like the file I picked out at random was too big, and my developers should probably remove it from the get folder... Sorry.')
         });
     });

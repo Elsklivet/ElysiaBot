@@ -67,11 +67,11 @@ scanMessages=function(contents, message){
             // What does x mean?
             let result = contents.match(/does (.*?) mean/gmi)[0];
             result = result.replace(/does /g, '').replace(/ mean/g, '');
+            result = result.replace(/["]/g, '%22');
+            result = result.replace(/[“]/g, '%22');
+            result = result.replace(/[”]/g, '%22');
             
             if (result.includes(" ")){
-                result = result.replace(/["]/g, '%22');
-                result = result.replace(/[“]/g, '%22');
-                result = result.replace(/[”]/g, '%22');
 
                 if (!result.toLowerCase().includes(" this ") && !result.toLowerCase().includes(" that ") && !result.toLowerCase().includes(" he ")
                     && !result.toLowerCase().includes(" she ") && !result.toLowerCase().includes(" it ")){

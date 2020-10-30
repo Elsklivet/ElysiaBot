@@ -53,7 +53,7 @@ new Command({
       
             embed
             .setColor('#FF3A00')
-            .setTitle(`www.reddit.com`, `https://www.crunchyroll.com/search?from=&q=${arg}`)
+            .setTitle(`www.reddit.com`, `https://www.reddit.com/search/?q=${arg}`)
             .setAuthor('Search Reddit')
             .setURL(`https://www.reddit.com/search/?q=${arg}`)
             .setDescription(`Search for ${args[0]} in Reddit`)
@@ -61,12 +61,30 @@ new Command({
       
             message.channel.send(`https://www.reddit.com/search/?q=${arg}`,embed);
            break;
+           case '-u':
+           case 'u':
+              arg = arg.replace(/\s/g, '+');
+              arg = arg.replace(/['"]/g, '');
+              arg = arg.replace(/[“]/g, '');
+              arg = arg.replace(/[”]/g, '');
+              console.log(arg);
+        
+                 embed
+             .setColor('#FF3A00')
+             .setTitle(`www.reddit.com`, `https://www.reddit.com/u/${arg}/`)
+             .setAuthor('Reddit')
+             .setURL(`https://www.reddit.com/u/${arg}/`)
+             .setDescription(`Go to subreddit: ${args[0]} in Reddit (increased 404 risk)`)
+             .setFooter(`Please report errors to Elsklivet#8867.`);
+           
+             message.channel.send(`https://www.reddit.com/u/${arg}/`,embed);
+             break;
           default:
-           message.channel.send('You did not provide correct arguments. Usage: \`~reddit \"query or sub\" [-r | -s]\` where -r indicates exact subreddit and -s indicates search, and quotations are included.').catch(console.log);
+           message.channel.send('You did not provide correct arguments. Usage: \`~reddit \"query or sub\" [-r | -s | -u]\` where -r indicates exact subreddit, -s indicates search, -u indicates user, and quotations are included.').catch(console.log);
            break;
         }
       }else{
-        message.channel.send('You did not provide correct arguments. Usage: \`~reddit \"query or sub\" [-r | -s]\` where -r indicates exact subreddit and -s indicates search, and quotations are included.').catch(console.log);
+        message.channel.send('You did not provide any arguments. Usage: \`~reddit \"query or sub\" [-r | -s | -u]\` where -r indicates exact subreddit, -s indicates search, -u indicates user, and quotations are included.').catch(console.log);
       }
     }
   })

@@ -9,6 +9,8 @@ Commands:
  avatar: show your avatar as an image, or those of anyone you mention
  nsfw (-optin | -optout): opt into NSFW; opt out of NSFW
  hentai: post random hentai
+ classics: post a random meme from the selected tier if one is chosen, else a random tier.
+ ... -ss | -s | -a | -b | -c | -shit 
  about: post your information by default, or the info of all @mentions
  dev ...: [inaccessible to most users]
  ... -self: post Elysia's information

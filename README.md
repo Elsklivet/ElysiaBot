@@ -14,6 +14,8 @@ Elysia responds to commands that begin with '~'. To check if she is online, you 
  **avatar**: `~avatar [@mention]` show your avatar as an image, or those of anyone you mention.
  
  **hentai**: `~hentai` post random hentai
+
+ **classics**: `~c [-ss | -s | -a | -b | -c | -shit]` post a random meme from the selected tier if one is chosen, else a random tier.
  
  **about**: `~about [@mention]` post your information by default, or the info of @mention
  
@@ -33,7 +35,7 @@ Elysia responds to commands that begin with '~'. To check if she is online, you 
  
  **mdn**: `~mdn "{type}.{object}` e.g. `~mdn "class.Collection"` Get MDN documentation where class,operator,function/func,statement
  
- **djs**: `djs "{type}.{object}" | "{type}.{object}.{property/method}` Get DJS documentation where type is either class or typedef, object is the object, etc.
+ **djs**: `djs "{type}.{object}" | "{type}.{object}.{property/method}` Get DJS documentation where type is either class or typedef, object is the object, etc. Note: `.` can be replaced with `#`.
  
  **py/pydocs**: `~py "{type}#{object}" | "{nonstdobject}"` Get Python 3 Documentation where type is either stdtype, exceptions, or constants, and object is the subject or object, etc.
  

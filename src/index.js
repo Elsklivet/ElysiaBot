@@ -84,6 +84,7 @@ global.parseArgs = function (str) { // This function will be used everywhere to 
 
 client.on('message', message => { // Message event listener... when any message is sent anywhere that this bot is listening to (all channels in which it has view channel and read message history permissions, including DMs)
 	let prefix = '~'; // This can be changed any time
+	let altPrefix = "～";
 	let contents = message.content;
 	if (!listening && (config.authorIDS.indexOf(message.author.id) === -1)) {
 		message.channel.send("I'm not listening right now, I'm sorry. Developer can override this.").catch(console.log);
@@ -104,7 +105,24 @@ client.on('message', message => { // Message event listener... when any message 
 				break;
 			}
 		}
-	} 
+	}else if(contents.startsWith(altPrefix) && contents.trim().length > altPrefix.length){
+		let args = parseArgs(contents.trim().substring(altPrefix.length, contents.length)); // Parse the command
+		let cmd = args.shift().toLowerCase(); // The command
+		let cmdKeys = Object.keys(commands); // Don't worry about this, just keymaps
+		for (let i = 0; i < cmdKeys.length; i++) {
+			if (commands[cmdKeys[i]].calls.includes(cmd)) { //cmd is input,
+				try {
+					if(message.channel.type === "text") message.delete({timeout: 100, reason: "Command prefixes are deleted automatically."});
+					else console.log("I tried to delete a message, but was not in the correct channel type.");
+					commands[cmdKeys[i]].onCall(message, args); // Run the onCall method which will be defined in the command_name.js file in ./commands/
+				} catch (err) {
+					message.channel.send(`Bug found! Reporting the stack to my programmer.`).catch(console.log);
+					client.users.fetch("348235152972972042").then(d => d.send(`Bug found! Stack:\n\`\`\`${err.stack}\`\`\``).catch(console.log));	
+				}
+				break;
+			}
+		}
+	}
 	else{
 		let ai = new ChatAI();
 		ai.scanMessages(contents, message);

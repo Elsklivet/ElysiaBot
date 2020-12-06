@@ -10,7 +10,7 @@ const ChatAI = require('./chatai.js');
 
 console.log('Booting up...'); //Note: console.log(); is System.out.println();
 
-global.config = JSON.parse(fs.readFileSync('F:\\DiscordBots\\Dreadnot\\files\\config.json')); // The file for our information.
+global.config = JSON.parse(fs.readFileSync('G:\\DiscordBots\\Dreadnot\\files\\config.json')); // The file for our information.
 global.tokenfile = JSON.parse(fs.readFileSync(config.tokenf)); //The file with our token in it.
 client.login(tokenfile.token); // Login with your token.
 
@@ -84,7 +84,7 @@ global.parseArgs = function (str) { // This function will be used everywhere to 
 
 client.on('message', message => { // Message event listener... when any message is sent anywhere that this bot is listening to (all channels in which it has view channel and read message history permissions, including DMs)
 	let prefix = '~'; // This can be changed any time
-	let altPrefix = "～";
+	let altPrefix = "e$";
 	let contents = message.content;
 	if (!listening && (config.authorIDS.indexOf(message.author.id) === -1)) {
 		message.channel.send("I'm not listening right now, I'm sorry. Developer can override this.").catch(console.log);

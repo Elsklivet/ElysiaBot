@@ -22,8 +22,8 @@ new Command({
            ... -text | -txt | -t | -file | -f : send help file as an attachment
            ping: ping the bot
            avatar: show your avatar as an image, or those of anyone you mention
-           nsfw (-optin | -optout): opt into NSFW; opt out of NSFW
-           hentai: post random hentai
+           DEPRECATED // nsfw (-optin | -optout): opt into NSFW; opt out of NSFW //
+           hentai: post random hentai (this will NOT work in non-NSFW servers or channels)
            about: post your information by default, or the info of all @mentions
            dev ...: [inaccessible to most users]
            ... -self: post Elysia's information
@@ -52,8 +52,8 @@ new Command({
          ... -text | -txt | -t | -file | -f : send help file as an attachment
          ping: ping the bot
          avatar: show your avatar as an image, or those of anyone you mention
-         nsfw (-optin | -optout): opt into NSFW; opt out of NSFW
-         hentai: post random hentai
+         DEPRECATED // nsfw (-optin | -optout): opt into NSFW; opt out of NSFW //
+         hentai: post random hentai (THIS WILL NOT WORK IN NON NSFW SERVERS OR CHANNELS)
          about: post your information by default, or the info of all @mentions
          dev ...: [inaccessible to most users]
          ... -self: post Elysia's information

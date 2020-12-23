@@ -1,7 +1,7 @@
 new Command({
   title: "Hentai",
   description: "Sauce me up daddy.",
-  call: ["hentai","he","へ","変態"],
+  call: ["hentai","he","h","へ","変態"],
   onCall: function(message, args){
     if(message.channel.type != "dm" && !message.channel.nsfw) {
       message.channel.send("We don't do that here...").then(msg => msg.delete(3000)).catch(console.log);

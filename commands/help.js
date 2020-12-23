@@ -1,7 +1,7 @@
 new Command({
   title: "Help",
   description: "Display help.",
-  call: ["help","h"],
+  call: ["help"],
   onCall: function(message, args){
     console.log(args.length);
     if(args[0]){

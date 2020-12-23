@@ -34,7 +34,7 @@ new Command({
           message.channel.send('Deleted messages.').then(m => m.delete({timeout: 2000, reason: "Posted"}))});
         }).catch(console.error);
 
-      }else if(args[0].toLowerCase()==='-reacted' || args[0].toLowerCase()==='-r' || args[0].toLowerCase()==='-reaction'){
+      }else if(args[0].toLowerCase()==='-reacted' || args[0].toLowerCase()==='-r' || args[0].toLowerCase()==='-reaction' || args[0].toLowerCase()==='-react'){
         // Via: @appellation: Use messages.fetch with a before query to get all messages as a collection (async)
         message.channel.messages.fetch({limit: 100}).then(allMsgs => {
           console.log(`Fetched ${allMsgs.size} messages successfully.`);

@@ -3,6 +3,7 @@ new Command({
   description: "Sauce me up daddy.",
   call: ["hentai","he","h","へ","変態"],
   onCall: function(message, args){
+    // We might be able to serialize a database of servers/channels with NSFW commands allowed and block all else.
     if(message.channel.type != "dm" && !message.channel.nsfw) {
       message.channel.send("We don't do that here...").then(msg => msg.delete(3000)).catch(console.log);
       return;
@@ -14,7 +15,7 @@ new Command({
 
     let fs = require('fs');
 
-    fs.readdir(config.hentaidir, (err, data) => { // Prereq: make a directory called commands. In it will be placed a new JS file for each command. This is the best method I currently have.
+    fs.readdir(config.hentaidir, (err, data) => { 
     	if(err){ // Check for a file system error.
     	 console.log(err.stack);
     	 return;

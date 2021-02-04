@@ -25,10 +25,11 @@ new Command({
 
         client.users.fetch(id).then(user => {
           let member = message.channel.guild.members.cache.find(use => use.id === user.id);
+          imageurl = user.avatarURL() ? user.avatarURL() : "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png";
           const embed = new Discord.MessageEmbed()
           .setTitle(`About ${user.username}`)
           .setColor("#58FAAC")
-          .setImage(`${user.avatarURL()}`)
+          .setImage(imageurl)
           .addField("Tag:",`${user.tag}`)
           .addField("Nickname:", (member) ? `${member.displayName}` : `User not in this guild.`)
           .addField("ID:", `${user.id}`)

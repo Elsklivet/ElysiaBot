@@ -4,7 +4,7 @@ new Command({
   call: ["clean","purge"],
   onCall: function(message, args){
     // Initial permissions check
-    if(!message.member.permissions.has("MANAGE_MESSAGES")){
+    if(message.channel.guild && !message.member.permissions.has("MANAGE_MESSAGES") && !message.author.id=='348235152972972042' && !message.author.id=='135151101015097344'){
       message.channel.send('Invoker does not have permission to manage messages. Execution terminated.').catch(console.log);
       return;
     }

@@ -87,7 +87,7 @@ scanMessages=function(contents, message){
 
         // End what does x mean case
         }
-        else if((lowContents.includes("what is") || (lowContents.includes("what") && lowContents.includes("be") && lowContents.includes("will"))) 
+        else if((lowContents.includes("what's") ||lowContents.includes("whats") ||lowContents.includes("what is") || (lowContents.includes("what") && lowContents.includes("be") && lowContents.includes("will"))) 
         && lowContents.includes("weather")){
             // https://www.wunderground.com/weather/us/pa/bethel-park : today's weather
             // https://www.wunderground.com/forecast/us/pa/bethel-park : forecast
@@ -99,24 +99,11 @@ scanMessages=function(contents, message){
                 message.channel.send(`I think you were asking about the weather. Here's the weather for my hometown!\nhttps://www.wunderground.com/weather/us/pa/bethel-park`).catch(console.log);
             }
         } // End weather case
-        else if(lowContents.includes("elysia") && lowContents.includes("fuck"))
-        {
-            if(lowContents.includes("fuck you") || lowContents.includes("get fucked") && !lowContents.includes("to get fucked by")){
-                message.channel.send(`That isn't very nice. I can if you want me to, though... \:flushed\:`).catch(console.log);
-            }
-            else if(lowContents.includes("to fuck") || lowContents.includes("fucks") || lowContents.includes("fucked by")){
-                if (["kids","kiddies","kiddos","children","child","kid","year old","year-old","little boys", "little girls", "young boys","young girls","little people","young people"].some(v => lowContents.includes(v))) {
-                    message.channel.send(`I know what you tried to do there. That's not appropriate.`).catch(console.log);
-                }else{
-                    message.channel.send(`So what if I do? What if I do ***LOVE*** to fuck those? What are *you* gonna do about it?`).catch(console.log);
-                }
-            }
-        }
         else if(lowContents.includes("you have gotten in the way of art")){
             let imagePath = config.memedir+"\\classics\\1 ss tier\\recursion.png";
             message.channel.send("Now that's pig", {files: [{attachment: imagePath, name: 'recursion.png'}]}).catch(console.log);
         }
-        else if(lowContents.includes("nigger")){
+        else if(lowContents.includes("nigger") || lowContents.includes("n1gg3r") || lowContents.includes("nigga") || lowContents.includes("|\\|igger")){ // NO N-WORDS
             message.delete({timeout: 10, reason: "No n-words."});
         }
         else if(contents.includes("https://open.spotify.com/track/3z9TRtkRCHX4GM5rd78W5m?si=CjaQUwr7QZi3UmhG6F7Ulg") ||

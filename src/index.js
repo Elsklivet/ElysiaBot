@@ -5,7 +5,7 @@ global.cheerio = require('cheerio');
 global.htmlToText = require('html-to-text');
 
 let fs = require('fs'); // This is necessary for file system operations.
-const { User } = require('discord.js');
+const { User, ReactionUserManager, MessageFlags, MessageAttachment } = require('discord.js');
 const ChatAI = require('./chatai.js');
 
 console.log('Booting up...'); //Note: console.log(); is System.out.println();
@@ -15,6 +15,7 @@ global.tokenfile = JSON.parse(fs.readFileSync(config.tokenf)); //The file with o
 client.login(tokenfile.token); // Login with your token.
 
 global.listening = true
+global.lastMessageTime = new Date().getTime();
 
 global.commandsDirectory = config.commanddir; // Get commands from a given directory
 console.log('Loading commands...');
@@ -58,37 +59,52 @@ client.on('ready', () => { // This is the 'ready' event listener
 	client.user.setActivity("~help", {
 		type: "LISTENING"
 	});
+	// Reset last-messages file on ready.
+	// fs.writeFile(`${config.filedir}\\lastmessages.json`, "{}", (err) => { 
+	// 	if (err) throw err; 
+	// });
+	// fs.writeFile(`${config.filedir}\\lastmessagetime.txt`, `${new Date().getTime()}`, (err) => { 
+	// 	if (err) throw err; 
+	// });
 });
 
 
 global.parseArgs = function (str) { // This function will be used everywhere to parse arguments in commands ("!ping -arg1 --arg2", anything separated by space and not in a quotation markset)
 	let out = []; // Output array of arguments
 	let quote = false; // Is "" present
-	let tempstr = '';
-	for (let i = 0; i < str.length; i++) { // Some basic looping and splicing to split
-		if (str[i] === " " && !quote && tempstr.trim().length > 0) {
-			out.push(tempstr.trim());
-			tempstr = '';
-		} else if (str[i] === '"' && str[i - 1] !== "\\") {
-			quote = !quote;
-		} else {
-			if (str[i] === "\\" && str[i + 1] === '"') continue;
-			tempstr += str[i];
+	let tempstr = ''; // This will be filled with args and pushed
+	for (let i = 0; i < str.length; i++) { // Iterate string
+		if (str[i] === " " && !quote && tempstr.trim().length > 0) { // If this is a space and we're not in quotes AND there is something to push...
+			out.push(tempstr.trim()); // ... push that and
+			tempstr = '';			  // reset the string.
+		} else if (str[i] === '"' && str[i - 1] !== "\\") { // If this is a quote and the it is not escaped ...
+			quote = !quote; // negate quote flag (we either began or ended quotes)
+		} else { // Otherwise... 
+			if (str[i] === "\\" && str[i + 1] === '"') continue; // if we're about to hit a quote, continue.
+			tempstr += str[i]; // Otherwise, add this character to the thing we will eventually push.
 		}
 	}
-	if (tempstr.trim().length > 0) {
-		out.push(tempstr.trim());
+	if (tempstr.trim().length > 0) { // If anything is left after the loop is done ... 
+		out.push(tempstr.trim()); // ... push that to output too.
 	}
-	return out;
+	return out; // Return output array of arguments.
 }
 
 client.on('message', message => { // Message event listener... when any message is sent anywhere that this bot is listening to (all channels in which it has view channel and read message history permissions, including DMs)
 	let prefix = '~'; // This can be changed any time
-	let altPrefix = "e$";
+	let altPrefix = "/elysia ";
 	let contents = message.content;
+
 	if (!listening && (config.authorIDS.indexOf(message.author.id) === -1)) {
 		message.channel.send("I'm not listening right now, I'm sorry. Developer can override this.").catch(console.log);
 	} else if (contents.startsWith(prefix) && contents.trim().length > prefix.length) { // Checking to make sure the message is considered a command
+		
+		if(rateLimit(message)){
+			console.log(`Rate limiting ${message.author}`);
+			return;
+		}
+		lastMessageTime = message.createdTimestamp
+
 		let args = parseArgs(contents.trim().substring(prefix.length, contents.length)); // Parse the command
 		let cmd = args.shift().toLowerCase(); // The command
 		let cmdKeys = Object.keys(commands); // Don't worry about this, just keymaps
@@ -106,6 +122,13 @@ client.on('message', message => { // Message event listener... when any message 
 			}
 		}
 	}else if(contents.startsWith(altPrefix) && contents.trim().length > altPrefix.length){
+
+		if(rateLimit(message)){
+			console.log(`Rate limiting ${message.author}`);
+			return;
+		}
+		lastMessageTime = message.createdTimestamp
+
 		let args = parseArgs(contents.trim().substring(altPrefix.length, contents.length)); // Parse the command
 		let cmd = args.shift().toLowerCase(); // The command
 		let cmdKeys = Object.keys(commands); // Don't worry about this, just keymaps
@@ -141,3 +164,42 @@ client.on('rateLimit', rli => {
 		"\nPath: " + rli.path +
 		"\nHTTP Method: " + rli.method);
 });
+
+rateLimit=function(message){
+	// We won't rate limit devs, for testing reasons.
+	if((config.authorIDS.indexOf(message.author.id) !== -1)) return;
+	// var lastMsgs = JSON.parse(fs.readFileSync(`${config.filedir}\\lastmessages.json`));
+	var differ = message.createdTimestamp - lastMessageTime
+	if (differ <= 5000) {
+		return true;
+	}else return false;
+	
+	/* 
+	if(lastMsgs.array.length === 0){
+		lastMsgs.push(message.author);
+		fs.writeFile(`${config.filedir}\\lastmessages.json`, JSON.stringify(lastMsgs), (err) => { 
+			if (err) throw err; 
+		});
+		return false;
+	}else if(lastMsgs.length >= 5){
+		var ratelimit = false;
+		if(lastMsgs.array.includes(message.author)){
+			ratelimit = true;
+		}
+		fs.writeFile(`${config.filedir}\\lastmessages.json`, "{}", (err) => { 
+			if (err) throw err; 
+		});
+		return ratelimit;
+	}else{
+		lastMsgs.push(message.author);
+		var ratelimit = false;
+		if(lastMsgs.array.includes(message.author)){
+			ratelimit = true;
+		}
+		fs.writeFile(`${config.filedir}\\lastmessages.json`, JSON.stringify(lastMsgs), (err) => { 
+			if (err) throw err; 
+		});
+		return ratelimit;
+	}
+	*/
+}

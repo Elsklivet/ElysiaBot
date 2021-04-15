@@ -7,7 +7,7 @@ new Command({
   call: ["ping"], // This is vital: this is what must be typed after the prefix for the command to be called. This is referred to as call in the global.Command function
   onCall: function(message, args){
     message.channel.send('Pinging in progress...').then(newMsg => { // Read docs for the intricacies of this stuff. This is an asynchronous function (promise). I hate them.
-      newMsg.edit(`Poggers! Took ${newMsg.createdTimestamp - message.createdTimestamp} milliseconds to respond to ${message.author.username}.`);
+      newMsg.edit(`Pong! Took ${newMsg.createdTimestamp - message.createdTimestamp} milliseconds to respond to ${message.author.username}.`);
     }).catch(console.log);
   }
 })

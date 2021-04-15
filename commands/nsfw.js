@@ -1,13 +1,14 @@
 new Command({
-  title: "Opt-In to Hentai",
+  title: "Opt-In to NSFW",
   description: "Opt-in or out of the NSFW channels",
   call: ["nsfw"],
   onCall: function(message, args){
-    // 756724875476992010 Ian
+    // 756724875476992010 Ian server
     // or
-    // 617923909584551945 Me
+    // 617923909584551945 My server
     // 617923909584551945
     // 756724875476992010
+
     if(args.length > 0){
       if (String(args) ==="-optin") {
         console.log(`\tOpting ${message.author.username} in to the NSFW channels... ... ...`)

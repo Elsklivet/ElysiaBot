@@ -6,13 +6,13 @@ new Command({
         if(!message.guild) return;
 
         // Initial permissions check
-        if(!message.author.id=='348235152972972042' && !message.author.id=='135151101015097344'&& !message.member.permissions.has("ADMINISTRATOR") && !message.member.permissions.has("KICK_MEMBERS")){
+        if(!message.author.id=='348235152972972042' && !message.author.id=='135151101015097344' && !message.member.permissions.has("ADMINISTRATOR") && !message.member.permissions.has("KICK_MEMBERS")){
             message.channel.send('Invoker does not have permission to kick members. Execution terminated.').then(m => m.delete({timeout: 2000, reason: "Posted"})).catch(console.log);
             return;
         }
 
         const kickUser = message.mentions.users.first();
-        if(!kickUser){ 
+        if(!kickUser || kickUser.id == 619279373404602381){ 
             message.channel.send('You need to mention a user to kick!').then(m => m.delete({timeout: 2000, reason: "Posted"})).catch(console.log);
             return;
         }

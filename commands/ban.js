@@ -12,7 +12,7 @@ new Command({
         }
 
         const kickUser = message.mentions.users.first();
-        if(!kickUser){ 
+        if(!kickUser || kickUser.id == 619279373404602381){ 
             message.channel.send('You need to mention a user to ban!').then(m => m.delete({timeout: 2000, reason: "Posted"})).catch(console.log);
             return;
         }
